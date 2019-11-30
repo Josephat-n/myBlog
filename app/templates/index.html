@@ -1,3 +1,6 @@
+{% extends 'base.html'%}
+
+{% block content %}
 <h3 style="margin-left: 40px; color:orangered">BLOGS</h3>
 <div class="container">
    {% for x in blogs %}
@@ -12,3 +15,4 @@
    </div>
    {% endfor %}
 </div>
+{% endblock %}
