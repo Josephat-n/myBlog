@@ -1,1 +1,14 @@
-<h1>Index Page</h1>
+<h3 style="margin-left: 40px; color:orangered">BLOGS</h3>
+<div class="container">
+   {% for x in blogs %}
+   <div class="row">
+      <div class="col-4"></div>
+      <div class="col-4">
+         <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{x.blog_msg}}</li>
+            <hr>
+         </ul>   
+      </div>
+   </div>
+   {% endfor %}
+</div>

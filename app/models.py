@@ -23,5 +23,5 @@ class Blog(db.Model):
    
    def __repr__(self):
 
-      return f'Pitch {self.pitch_msg}'
+      return f'Pitch {self.blog_msg}'
 
