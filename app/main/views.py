@@ -2,6 +2,7 @@ from flask import render_template
 from . import main
 from .. import db
 from ..models import Blog
+from .forms import CommentForm
 
 
 @main.route('/')
@@ -11,13 +12,14 @@ def index():
    print(blogs)
    return render_template('index.html', blogs = blogs)
 
-@main.route('/blog/<int:id>')
-def blog(id):
+@main.route('/comment/<int:id>')
+def comment(id):
    """
    Allow for commenting of a given blog.
    """
    #Should return a blog by id   
    a_blog = Blog.query.filter_by(id= id)
    print(a_blog)
+   form = CommentForm()
    
-   return render_template('blog.html', id = id, a_blog = a_blog)
+   return render_template('comment.html',a_blog = a_blog, comment_form=form)
