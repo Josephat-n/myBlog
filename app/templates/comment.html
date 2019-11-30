@@ -7,13 +7,19 @@
   <div class="row">
     <div class="col-md-4">{{x.blog_msg}}
     </div>
-    
-    <div class="col-md-6">
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
        {{ wtf.quick_form(comment_form) }}
     </div>
   </div> 
-
   {% endfor %}
-</div>
 
+  <!--Row to display Comments-->
+  <div class="row">
+    <h3>Comments</h3>
+    <hr>
+    
+  </div>
+
+</div>
 {% endblock %}
