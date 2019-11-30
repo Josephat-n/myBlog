@@ -5,8 +5,6 @@ from .forms import RegistrationForm, LoginForm
 from .. import db
 from flask_login import login_user,login_required
 
-
-
 @auth.route('/register',methods = ["GET","POST"])
 def register():
    form = RegistrationForm()
