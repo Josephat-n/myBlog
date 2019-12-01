@@ -3,6 +3,7 @@ from . import main
 from .. import db
 from ..models import Blog
 from .forms import CommentForm
+from flask_login import login_required, current_user
 
 
 @main.route('/')
