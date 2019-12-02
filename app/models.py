@@ -13,7 +13,9 @@ class User(UserMixin, db.Model):
    id = db.Column(db.Integer,primary_key = True)
    username = db.Column(db.String(255),index = True)
    email = db.Column(db.String(255),unique = True,index = True)
-   pass_secure = db.Column(db.String(255))   
+   pass_secure = db.Column(db.String(255))  
+   profile_pic_path = db.Column(db.String()) 
+   bio = db.Column(db.String(255))
    password_hash = db.Column(db.String(255))
    blogs = db.relationship('Blog',backref = 'user',lazy="dynamic")
    
