@@ -3,7 +3,7 @@ from . import main
 from .. import db
 from ..models import Blog, User
 from .forms import CommentForm, BlogForm, UpdateProfile
-from flask_login import login_required, current_user
+from flask_login import login_user,login_required,current_user,logout_user
 
 
 @main.route('/')
@@ -59,3 +59,4 @@ def update_profile(uname):
         return redirect(url_for('.profile',uname=user.username))
 
     return render_template('profile/update.html',form =form)
+ 

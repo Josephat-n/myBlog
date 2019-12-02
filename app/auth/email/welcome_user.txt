@@ -1,3 +1,0 @@
-Hello {{user.username}}
-Welcome to myBlog
-We have just seen you have signed up for our application and want to welcome you to the family. Please enjoy being among the first people to read new blogs.
