@@ -3,9 +3,31 @@
 {% block content %}
 <div class="container">
 <div class="row">
-<!-- displaying  Username-->
-  <div class="col-md-4">
-    <h3> {{user.username| capitalize}} </h3>
+  <!--This section is for displaying a users's blogs-->
+ 
+  <div class="col-md-7">     
+    <h1>Your Blogs</h1>
+    {% for x in blogs %}
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{x.blog_msg}}</li>
+        <a href="/comment/{{x.id}}"><button class="btn btn-info">Edit Blog</button></a>
+        <hr>
+     </ul>
+     {% endfor %}
+  </div>
+
+
+  <div class="col-md-5">
+    <h1>Your Profile</h1>
+    <!--Display profile photo-->
+      {% if user.profile_pic_path %}
+      <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail">
+      {%else%}
+      <p>No profile picture</p>
+      {% endif %}
+
+    <!--Username-->
+    <h3>Name: {{user.username| capitalize}} </h3>
 
     <!--Displaying user bio-->
     {% if user.bio %}
@@ -15,19 +37,8 @@
     {% endif %}
 
     {% if user == current_user %}
-      <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
+      <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a><br>
       <a href="{{url_for('main.write_blog',uname=user.username)}}">Write a Blog</a>
-    {% endif %}
-    
-  </div>
-
-  <!--Display profile photo-->
-  <div class="col-md-4">
-
-    {% if user.profile_pic_path %}
-    <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail">
-    {%else%}
-    <p>No profile picture</p>
     {% endif %}
   </div>
 </div>

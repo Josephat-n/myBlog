@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for
 from . import main
 from .. import db
-from ..models import Blog, User
+from ..models import Blog, User, Comment
 from .forms import CommentForm, BlogForm, UpdateProfile
 from flask_login import login_user,login_required,current_user,logout_user
 
@@ -33,13 +33,16 @@ def blog():
    return render_template('blog.html')
 
 @main.route('/user/<uname>')
-def profile(uname):
+def profile(uname):   
+   # blogs = Blog.query.all()
+   blogs = Blog.query.filter_by(user_id = current_user.id)
+   print(blogs)
+   
    user = User.query.filter_by(username = uname).first()
-
    if user is None:
       abort(404)
 
-   return render_template("profile/profile.html", user = user)
+   return render_template("profile/profile.html", user = user, blogs= blogs)
    
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
 @login_required
