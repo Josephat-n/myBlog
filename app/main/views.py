@@ -24,3 +24,12 @@ def comment(id):
    form = CommentForm()
    
    return render_template('comment.html',a_blog = a_blog, comment_form=form)
+
+@main.route('/blog/')
+def blog():
+   """
+   path for creating a new blog
+   """
+   return render_template('blog.html')
+
+   

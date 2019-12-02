@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="container">
+   <div class="row">
+         <div class="col-md-3"></div>
+         <div class="col-md-6">
+         <div class="card" style="width: 100%;">
+               <div class="card-body">
+                 <p class="card-text">To write a blog you must be signed in.</p>
+                 <a href="{{url_for('auth.register')}}" class="card-link">Sign Up</a>
+                 <a href="{{url_for('auth.login')}}" class="card-link">Sign In</a>
+               </div>
+             </div>
+         </div>
+      <div class="col-md-3"></div>
+   </div>
+</div>
+
+{% endblock %}
