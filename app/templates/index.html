@@ -1,19 +1,28 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<h3 style="margin-left: 40px; color:orangered">BLOGS</h3>
-<div class="container">
-   {% for x in blogs %}
+
+<div class="container">  
    <div class="row">
-      <div class="col-4"></div>
-      <div class="col-4">
+      <div class="col-sm-4">
+         <h2 style="color:orangered">Quotable Quotes</h2>
+         <div class="jumbotron text-center">
+                {{quote.quote}} <br>
+               <br>
+               ~ {{quote.author}}
+           </div>
+      </div>
+      <div class="col-sm-8">
+            <h3 style="color:orangered">BLOGS</h3>
+         {% for x in blogs %}
          <ul class="list-group list-group-flush">
             <li class="list-group-item">{{x.blog_msg}}</li>
             <a href="/comment/{{x.id}}"><button class="btn btn-info">Add Comment</button></a>
             <hr>
          </ul>   
+         {% endfor %}
       </div>
    </div>
-   {% endfor %}
+
 </div>
 {% endblock %}

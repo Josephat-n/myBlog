@@ -1,17 +1,18 @@
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, request, flash
 from . import main
 from .. import db
 from ..models import Blog, User, Comment
 from .forms import CommentForm, BlogForm, UpdateProfile
 from flask_login import login_user,login_required,current_user,logout_user
-
+from ..request import get_quote
 
 @main.route('/')
 def index():   
-   """Fetch the blogs from the database"""   
+   """Fetch the blogs from the database"""  
+   quote = get_quote() 
    blogs = Blog.query.all()
    print(blogs)
-   return render_template('index.html', blogs = blogs)
+   return render_template('index.html', blogs = blogs, quote = quote)
 
 @main.route('/comment/<int:id>')
 def comment(id):

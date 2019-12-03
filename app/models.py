@@ -65,3 +65,13 @@ class Comment(db.Model):
    
    def __repr__(self):
       return f'Comment {self.comment_msg}'
+   
+class Quote:
+   """
+   Blueprint for creating quote objects
+   """
+   
+   def __init__(self, id, author, quote):
+      self.id = id
+      self.author = author
+      self.quote = quote
