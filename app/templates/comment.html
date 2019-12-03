@@ -16,9 +16,12 @@
 
   <!--Row to display Comments-->
   <div class="row">
-    <h3>Comments</h3>
+    <h3>Comments</h3>    
     <hr>
-    
+    {% for x in comments %}
+    <p>{{x.comment_msg}}</p>
+
+    {% endfor %}
   </div>
 
 </div>

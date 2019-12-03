@@ -5,11 +5,9 @@ quote_url = 'http://quotes.stormconsultancy.co.uk/random.json'
 
 
 def get_quote():
-    '''
-    Method that fetches and returns the quotes from the quote uri
-    returns:
-        The quote object
-    '''
+    """
+    Method that fetches and returns the quotes from the quote url and returns quote objects
+    """
     
     with urllib.request.urlopen(quote_url) as url:
         response_data = url.read()

@@ -14,7 +14,7 @@ def index():
    print(blogs)
    return render_template('index.html', blogs = blogs, quote = quote)
 
-@main.route('/comment/<int:id>')
+@main.route('/comment/<int:id>',methods = ['GET','POST'])
 def comment(id):
    """
    Allow for commenting of a given blog.
@@ -22,9 +22,22 @@ def comment(id):
    #Should return a blog by id   
    a_blog = Blog.query.filter_by(id= id)
    print(a_blog)
-   form = CommentForm()
    
-   return render_template('comment.html',a_blog = a_blog, comment_form=form)
+   #return comments per blog
+   comments = Comment.query.filter_by(blog_id =id)
+   print(comments)
+   
+   form = CommentForm()   
+   new_comment = Comment()
+   
+   if form.validate_on_submit():
+      new_comment.comment_msg = form.comment_msg.data
+      new_comment.blog_id = id
+
+      db.session.add(new_comment)
+      db.session.commit()
+   
+   return render_template('comment.html',a_blog = a_blog, comment_form=form, comments = comments)
 
 @main.route('/blog/')
 def blog():
